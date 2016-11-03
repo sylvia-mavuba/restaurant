@@ -1,0 +1,31 @@
+{
+  "name": "restaurant-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchify": "watchify src/js/main.js -o dist/js/bundle.js",
+    "sass:w": "node-sass src/scss/style.scss dist/css/style.css --watch",
+    "build:css": "node-sass src/scss/style.scss dist/css/style.css",
+    "build:js": "browserify src/js/main.js -o dist/js/bundle.js",
+    "build": "npm run build:css && npm run build:js",
+    "watch": "npm run sass:w & npm run watchify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "moment": "^2.15.1",
+    "watchify": "^3.7.0",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.5.7",
+    "morgan": "^1.7.0"
+  }
+}
