@@ -8,8 +8,8 @@ var methodOverride = require('method-override');
 var cors = require('cors');
 
 var mongoose = require('mongoose');
-var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/measures';
-var Areas = require('./restaurant.js').Areas;
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/restaurants';
+var Restaurant = require('./restaurant.js').Restaurant;
 
 mongoose.connect(mongoUri, function(err, res) {
   if (err) console.log('ERROR connecting to: ' + mongoUri + '. ' + err);
@@ -30,17 +30,28 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.get('/api/measures', function (req, res) {
-  Areas.find({}, function(error, data){
+app.get('/api/restaurants', function (req, res) {
+  Restaurant.find({}, function(error, data){
     if (error) throw error;
-    else res.json({ 'measures': data });
+    else res.json({ 'restaurants': data });
   });
 });
 
-app.post('/api/measures/new', function (req, res) {
+app.post('/api/restaurants/new', function (req, res) {
   console.log(req.body);
-  var newAreas = new Areas({ 'temperature': req.body.measures.temperature, 'light': req.body.measures.light });
-  newArea.save(function (err) {
+  
+  var newRestaurant = new Restaurant({ 
+    'name': req.body.name, 
+    'tags': req.body.tags, 
+    'pictureURL': req.body.pictureURL, 
+    'date': req.body.date, 
+    'address': req.body.address, 
+    'city': req.body.city, 
+    'area': req.body.area, 
+    'imgVignette': req.body.imgVignette
+  });
+
+  newRestaurant.save(function (err) {
     if (err) {
       console.log(err);
     } else {

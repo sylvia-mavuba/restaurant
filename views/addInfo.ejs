@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  </head>
+  <body>
+	<form class="" >
+	        <input  type="text" name="name" value="">
+	        <input  type="text" name="city" value="">
+	       
+	        <button id="btn" type="submit" name="button">Go</button>
+	  
+	 </form>
+	 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+	 <script>
+	 	var mongoose = require('mongoose');
+
+		var Areas = mongoose.model('Areas', {
+		  var loadImg = function(inputVal, callback) {
+		    var URL     = 'restaurant.json';
+		    debugger
+		    /*$.ajax({
+		      url: URL,
+		      type:'GET'
+		    })
+		    .done(function (data) {
+		      callback(data);
+		      });*/
+		      
+		      $.ajax({
+		          url: URL,
+		          type:'GET',
+		          data: inputVal,
+		          beforeSend: function () {
+		              debugger
+		              $('.loader').show();
+
+		          },
+		          success: function (data) {
+		              //$('.loader').hide();
+		            callback(data);
+		          }
+		      });
+		  }
+		});
+
+module.export.Areas = Areas;
+	 </script>
+ </body>
+ </head>
+ </html>
