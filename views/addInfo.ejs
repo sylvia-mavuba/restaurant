@@ -7,47 +7,32 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   </head>
   <body>
-	<form class="" >
+	<form id="form">
 	        <input  type="text" name="name" value="">
 	        <input  type="text" name="city" value="">
 	       
-	        <button id="btn" type="submit" name="button">Go</button>
+	        <button id="btn" type="submit">Go</button>
 	  
 	 </form>
 	 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 	 <script>
-	 	var mongoose = require('mongoose');
 
-		var Areas = mongoose.model('Areas', {
-		  var loadImg = function(inputVal, callback) {
-		    var URL     = 'restaurant.json';
-		    debugger
-		    /*$.ajax({
-		      url: URL,
-		      type:'GET'
-		    })
-		    .done(function (data) {
-		      callback(data);
-		      });*/
-		      
-		      $.ajax({
-		          url: URL,
-		          type:'GET',
-		          data: inputVal,
-		          beforeSend: function () {
-		              debugger
-		              $('.loader').show();
-
-		          },
-		          success: function (data) {
-		              //$('.loader').hide();
-		            callback(data);
-		          }
-		      });
-		  }
+		$('#form').on('submit', function(e) {
+			e.preventDefault();
+			debugger
+			var name = $('input[name="name"]').val();
+			var city = $('input[name="city"]').val();
+			var formData = {'name':name, 'city': city};
+			  $.ajax({
+			    url: '/api/restaurants/new',
+			    type:'POST',
+			    data: formData
+			  })
+			  .done(function (data) {
+			    console.log(data);
+			   });
+			   
 		});
-
-module.export.Areas = Areas;
 	 </script>
  </body>
  </head>

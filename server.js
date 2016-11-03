@@ -30,6 +30,18 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
+app.get('/addinfo', function (req, res) {
+  res.render('addinfo');
+});
+
+app.delete('/deleteinfo/:variable', function (req, res) {
+  console.log(req.params);
+  Restaurant.remove({_id: req.params.variable}, function(error){
+    if (error) throw error;
+    else res.sendStatus(200);
+  });
+});
+
 app.get('/api/restaurants', function (req, res) {
   Restaurant.find({}, function(error, data){
     if (error) throw error;
@@ -39,7 +51,7 @@ app.get('/api/restaurants', function (req, res) {
 
 app.post('/api/restaurants/new', function (req, res) {
   console.log(req.body);
-  
+
   var newRestaurant = new Restaurant({ 
     'name': req.body.name, 
     'tags': req.body.tags, 
