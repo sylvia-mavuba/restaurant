@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  </head>
+  <body>
+  	<p>j'enrichi la bdd</p>
+	<!--<form id="setInformation">
+		<label for="name">Nom</label>
+	    <input  type="text" name="name" value="">
+
+	    <label for="city">Ville</label>
+	    <input  type="text" name="city" value="">
+
+	    <button id="btn" type="submit">Go</button>
+	 </form>-->
+
+	<p>Je remonte des informations de la bdd</p>
+	<form id="getInformation">
+		<label for="tag">Mot clé: </label>
+	    <input  type="text" name="tag" value="">
+	    <button id="btn" type="submit">Go</button>
+	</form>
+
+	 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+	 <script>
+
+		/*$('#setInformation').on('submit', function(e) {
+			e.preventDefault();
+			
+			var name = $('input[name="name"]').val();
+			var city = $('input[name="city"]').val();
+			var formData = {'name':name, 'city': city};
+			  $.ajax({
+			    url: '/api/restaurants/new',
+			    type:'POST',
+			    data: formData
+			  })
+			  .done(function (data) {
+			    console.log(data);
+			   });
+			   
+		});*/
+
+		
+
+		var model = null;
+
+		//Je filter mes recherches en fonctions des mots clés
+		var sortBy = function(elt) {
+			var filterModel = _.sortBy(model, elt);
+		};
+
+		$('#getInformation').on('submit', function(e) {
+			e.preventDefault();
+			/*debugger
+			var name = $('input[name="name"]').val();
+			var city = $('input[name="city"]').val();
+			var formData = {'name':name, 'city': city};
+			  $.ajax({
+			    url: '/api/restaurants',
+			    type:'GET',
+			    data: formData
+			  })
+			  .done(function (data) {
+			    console.log(data.restaurants[0]._id);
+			   });*/
+
+			//e.preventDefault();
+			var mywordKey = $('input[name="tag"]').val();
+			
+			  /*$.ajax({
+			    url: '/api/restaurants',
+			    type:'GET',
+			    data: mywordKey
+			  })
+			  .done(function (result) {
+			    //console.log(data.restaurants[0]._id);
+				console.log(result);
+				debugger
+				for(var data = 0; data < result.restaurants[0].tag.length; data++) {
+
+					
+				}
+
+			   }); */
+
+			   $.getJSON('/api/restaurants', {
+			   	tags: $('input[name="tag"]').val(),
+			   	format: 'json'
+			   })
+			   	.done(function(data) {
+			   		debugger
+			   		for(i = 0; i < data.length; i++){
+			   			if(data === $('input[name="tag"]').val()){
+			   				console.log('is there');
+			   			}
+			   		}
+			   	})
+		});
+
+	 </script>
+ </body>
+ </head>
+ </html>

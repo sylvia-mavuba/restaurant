@@ -24,14 +24,14 @@ app.set('views', path.join(__dirname, '/views')); //dossier pages
 app.use(logger('dev'));
 app.use(cors());
 app.use(methodOverride());
-app.use(express.static('public'));
+app.use(express.static('dist/'));
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('home');
 });
 
-app.get('/addinfo', function (req, res) {
-  res.render('addinfo');
+app.get('/index', function (req, res) {
+  res.render('index');
 });
 
 app.delete('/deleteinfo/:variable', function (req, res) {
