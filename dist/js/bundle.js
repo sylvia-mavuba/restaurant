@@ -8,7 +8,7 @@ var loadResult = function(inputValue, callback) {
         type: 'GET',
         data: inputValue,
         success: function(data) {
-            console.log(data);
+            callback(data);
         }
     });
 };
@@ -19,10 +19,9 @@ module.exports.getRestaurant = loadResult;
 require('./utils.js');
 require('./getRestaurant.js');
 },{"./getRestaurant.js":1,"./utils.js":3}],3:[function(require,module,exports){
-var loadResult = require('./getRestaurant').getRestaurant;
-
+var loadResult      = require('./getRestaurant').getRestaurant;
 var stockRestaurant = [];
-var model                 = null;
+var model           = null;
 
 //Fonction pour afficher les restaurants
 function renderRestaurantDom(collection) {
@@ -36,18 +35,33 @@ function renderRestaurantDom(collection) {
 //Fonction pour afficher les mots clés des restaurants
 var showKeyWorkRestaurant = function(inputValue) {
 
+    
     //je crée un tableau dans lequel je stock la valeur récupéré dans le champs du formulaire
     stockRestaurant.push(inputValue);
-    console.log(stockRestaurant);
 
-    debugger
     renderKeyWord(stockRestaurant);
     //$('#key-word-field').html(stockRestaurant);
 
-    loadResult(inputValue, function(response) {
-        debugger;
-        model = response;
-        renderRestaurantDom(model);
+    loadResult(inputValue, function (resp) {
+        //Ce que je souhaite, c'est de ne remonter que le bloc qui 
+        //m'interesse vis à vis de ma recherche
+
+
+        console.log(resp.restaurants);
+        var filteredModel = _.sortBy(resp.restaurants, 'name');
+        /*debugger
+        if(inputValue === filteredModel){
+            model = filteredModel;
+            renderRestaurantDom(model);
+        }*/
+        
+        var myFilter = resp.restaurants[0].name;
+        debugger
+         myFilter.forEach(function (name) {
+            if(inputValue === (resp.restaurants, 'name')){
+
+            }
+         });
     });
 
 };
@@ -70,6 +84,7 @@ $('.get-restaurant').submit(function(e) {
     var inputValue = $('.field-search').val();
     showKeyWorkRestaurant(inputValue);
 });
+
 
 
 
