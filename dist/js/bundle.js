@@ -55,12 +55,15 @@ var showKeyWorkRestaurant = function(inputValue) {
             renderRestaurantDom(model);
         }*/
         
-        var myFilter = resp.restaurants[0].name;
         debugger
-         myFilter.forEach(function (name) {
-            if(inputValue === (resp.restaurants, 'name')){
+        //var myFilter = resp.restaurants[0].name;
+        var myFilter = resp.restaurants;
+        var result = $.parseJSON(myFilter);
+         $.each(result, function (name) {
+            console.log(name);
+            /*if(inputValue === (resp.restaurants, 'name')){
 
-            }
+            }*/
          });
     });
 
