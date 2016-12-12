@@ -7,6 +7,7 @@ var loadResult = function(inputValue, callback) {
         type: 'GET',
         data: inputValue,
         success: function(data) {
+        
             callback(data);
         }
     });
