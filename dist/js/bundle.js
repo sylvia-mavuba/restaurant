@@ -77,12 +77,27 @@ var renderKeyWord = function(array) {
 $('.get-restaurant').submit(function(e) {
     e.preventDefault();
     deletePrevRequest();
-    //var inputValue = e.target.innerHTML;
+
     var inputValue = $('.field-search').val();
     showKeyWorkRestaurant(inputValue);
 });
 
 
+//Menu Burger
+//cf: http://codepen.io/tibomahe/pen/xVvMZN
+$('.js-icon-menu').click(function() {
+    $(this).toggleClass('active');
+    $('.menu-vertical').toggleClass('is-menu-open');
+});
 
+$('.js-icon-menu').click(function(e) {
+    var $target = $(event.target);
 
+    if($target.hasClass('active')) {
+        debugger
+        $('.wrapper').addClass('active');
+    } else {
+        $('.wrapper').removeClass('active');
+    }
+});
 },{"./getRestaurant":1}]},{},[2]);

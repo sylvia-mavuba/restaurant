@@ -1,0 +1,21 @@
+.menu-vertical {
+	height: 100%;
+	display: none;
+	position: absolute;
+    float: left;
+    background: #ccc;
+    width: 250px;
+	transition: 0.5s;
+	overflow-x: hidden;
+	&.is-menu-open {display: block;}
+}
+
+.wrapper {
+	transition: 0.5s;
+	&.active {margin-left: 250px;}
+}
+
+ul {
+	list-style: none;
+	a {transition: 0.5s;}
+}
