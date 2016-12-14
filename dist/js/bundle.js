@@ -22,10 +22,10 @@ require('./getRestaurant.js');
 },{"./getRestaurant.js":1,"./utils.js":3}],3:[function(require,module,exports){
 var loadResult      = require('./getRestaurant').getRestaurant;
 var stockRestaurant = [];
+var searchRestaurant = '';
 var model           = null;
 
 var deletePrevRequest = function() {
-    //var stockRestaurant = [];
     $('.content-result').html('');
     $('#keyWord').html('');
 };
@@ -42,22 +42,30 @@ var deletePrevRequest = function() {
 //Fonction pour afficher les mots clés des restaurants
 var showKeyWorkRestaurant = function(inputValue) {
     //je crée un tableau dans lequel je stock la valeur récupéré dans le champs du formulaire
-    stockRestaurant.push(inputValue);
-
-    renderKeyWord(stockRestaurant);
+    //stockRestaurant.push(inputValue);
+    
+    renderKeyWord(inputValue);
     //$('#key-word-field').html(stockRestaurant);
 
     loadResult(inputValue, function (callback) {
         //Ce que je souhaite, c'est de ne remonter que le bloc qui 
         //m'interesse vis à vis de ma recherche
-
+        
         for(var i = 0; i < callback.restaurants.length; i++) { 
             if(callback.restaurants[i].name === inputValue) {
                 var result = '';
                 result += '<div class="pure-u-1 pure-u-md-1-3"><div class="pricing-table pricing-table-free"><div class="pricing-table-header"><h2>' + callback.restaurants[i].name + '</h2><div>' + callback.restaurants[i].date + '</div></div></div>';
+                
+                //$('.result-search').html('');
+                $('.result-search').addClass('show');
                 $('.content-result').append(result);
+            } else {
+                //result += '<p>Oops! Nous n\'avons rien n\'a vous proposez ...<br>Réessayez autre chose ...</p>';
+                //$('.content-result').append(result);
+                console.log('pas de résultat');
             }
-        }
+        } 
+
     });
 };
 
@@ -65,9 +73,9 @@ var showKeyWorkRestaurant = function(inputValue) {
 var renderKeyWord = function(array) {
     var wordSpace = ' ';
 
-    array.forEach(function(keyWord) {
-        wordSpace += keyWord;
-    });
+    //array.forEach(function(keyWord) {
+        wordSpace += array;
+    //});
     $('#keyWord').html(wordSpace);
 };
 
@@ -77,11 +85,20 @@ var renderKeyWord = function(array) {
 $('.get-restaurant').submit(function(e) {
     e.preventDefault();
     deletePrevRequest();
-
     var inputValue = $('.field-search').val();
     showKeyWorkRestaurant(inputValue);
 });
 
+
+
+//Vider le champs de la recherche
+$('.btn-empty').on('click', function(e) {
+    var $target = $(event.target);
+
+    if($('.field-search').val !== '') {
+        $('.field-search').val('');
+    }
+});
 
 //Menu Burger
 //cf: http://codepen.io/tibomahe/pen/xVvMZN
@@ -94,10 +111,11 @@ $('.js-icon-menu').click(function(e) {
     var $target = $(event.target);
 
     if($target.hasClass('active')) {
-        debugger
+        $('.overlay ').addClass('visible');
         $('.wrapper').addClass('active');
     } else {
         $('.wrapper').removeClass('active');
+        $('.overlay ').removeClass('visible');
     }
 });
 },{"./getRestaurant":1}]},{},[2]);

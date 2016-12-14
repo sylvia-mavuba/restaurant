@@ -1,21 +1,42 @@
 .menu-vertical {
 	height: 100%;
-	display: none;
 	position: absolute;
     float: left;
     background: #ccc;
     width: 250px;
 	transition: 0.5s;
 	overflow-x: hidden;
-	&.is-menu-open {display: block;}
+	transform: translateX(-300px);
+	-webkit-transform: translateX(-300px);
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+
+	&.is-menu-open {
+		transform: translateX(0px);
+  		-webkit-transform: translateX(0px);
+	}
 }
 
 .wrapper {
-	transition: 0.5s;
-	&.active {margin-left: 250px;}
+  	-webkit-transition: all .5s ease;
+  		-moz-transition: all .5s ease;
+  		transition: all .5s ease;
+
+	&.active {
+		margin-left: 250px;
+		
+	}
 }
 
 ul {
 	list-style: none;
+
+	li {
+		-webkit-transition: all .5s ease;
+  		-moz-transition: all .5s ease;
+  		transition: all .5s ease;
+	}
+
 	a {transition: 0.5s;}
 }

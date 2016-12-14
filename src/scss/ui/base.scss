@@ -10,6 +10,30 @@ svg path, svg rect{
 	fill: #FF6700;
 }
 
+.overlay {
+	position: fixed;
+    visibility: hidden;
+    top: -10em;
+    left: -10em;
+    right: -10em;
+    bottom: -10em;
+    background: 0 0;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    z-index: 2;
+
+    &.visible {
+		visibility: visible;
+    	background: rgba(0,0,0,.6);
+	}
+}
+	
+.result-search {
+	display: none;
+	&.show {display: block;}
+}
+
 .loader{
 	display: none;
 }
+

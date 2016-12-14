@@ -7,6 +7,26 @@
 svg path, svg rect {
   fill: #FF6700; }
 
+.overlay {
+  position: fixed;
+  visibility: hidden;
+  top: -10em;
+  left: -10em;
+  right: -10em;
+  bottom: -10em;
+  background: 0 0;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  z-index: 2; }
+  .overlay.visible {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.6); }
+
+.result-search {
+  display: none; }
+  .result-search.show {
+    display: block; }
+
 .loader {
   display: none; }
 
@@ -196,23 +216,34 @@ p {
 
 .menu-vertical {
   height: 100%;
-  display: none;
   position: absolute;
   float: left;
   background: #ccc;
   width: 250px;
   transition: 0.5s;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  transform: translateX(-300px);
+  -webkit-transform: translateX(-300px);
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease; }
   .menu-vertical.is-menu-open {
-    display: block; }
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px); }
 
 .wrapper {
-  transition: 0.5s; }
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease; }
   .wrapper.active {
     margin-left: 250px; }
 
 ul {
   list-style: none; }
+  ul li {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease; }
   ul a {
     transition: 0.5s; }
 
@@ -265,3 +296,6 @@ ul {
   -ms-transform: rotate(-45deg) scale(1.2);
   -o-transform: rotate(-45deg) scale(1.2);
   transform: rotate(-45deg) scale(1.2); }
+
+.btn-empty {
+  cursor: pointer; }
