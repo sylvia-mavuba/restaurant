@@ -1,8 +1,9 @@
 .js-icon-menu {
+  position: absolute;
   cursor: pointer;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  color: white;
+  border: 7px solid white;
   float: left;
   margin: 20px 40px;
 }

@@ -37,24 +37,24 @@ var showKeyWorkRestaurant = function(inputValue) {
                 //$('.result-search').html('');
                 $('.result-search').addClass('show');
                 $('.content-result').append(result);
-            } else {
-                //result += '<p>Oops! Nous n\'avons rien n\'a vous proposez ...<br>Réessayez autre chose ...</p>';
-                //$('.content-result').append(result);
-                console.log('pas de résultat');
             }
+
         } 
+            if(callback.restaurants[i].name !== inputValue) {
+                console.log('pas de réponse');
+            }
 
     });
 };
 
 //J'affiche les mots clés dans la div correspondant à la recherche
 var renderKeyWord = function(array) {
-    var wordSpace = ' ';
+    var myWord = ' ';
 
     //array.forEach(function(keyWord) {
-        wordSpace += array;
+        myWord += array;
     //});
-    $('#keyWord').html(wordSpace);
+    $('#keyWord').html(myWord);
 };
 
 

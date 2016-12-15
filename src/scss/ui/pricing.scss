@@ -46,10 +46,9 @@ p {
  */
 
 .banner {
-  background: transparent url('https://pixabay.com/get/e037b70a2af01c22d9584518a34f4294ea76e3dc04b0154995f0c97ba0e5b0/restaurant-926524_1920.jpg') 0 0 no-repeat;
+  background: transparent url('../img/bg-home.jpg') 0 0 no-repeat;
   text-align: center;
   background-size: cover;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://pixabay.com/get/e037b70a2af01c22d9584518a34f4294ea76e3dc04b0154995f0c97ba0e5b0/restaurant-926524_1920.jpg', sizingMethod='scale');
   height: 200px;
   width: 100%;
   margin-bottom: 3em;
