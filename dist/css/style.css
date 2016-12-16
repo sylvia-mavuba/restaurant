@@ -299,3 +299,6 @@ ul {
 
 .btn-empty {
   cursor: pointer; }
+
+.field-search {
+  display: inline-block; }
