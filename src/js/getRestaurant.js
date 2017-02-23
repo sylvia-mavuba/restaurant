@@ -5,7 +5,8 @@ var loadResult = function(inputValue, callback) {
     $.ajax({
         url: URL,
         type: 'GET',
-        data: inputValue,
+        data: JSON.stringify(inputValue),
+        contentType: "application/json; charset=UTF-8",
         success: function(data) {
         
             callback(data);

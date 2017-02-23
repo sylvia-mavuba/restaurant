@@ -17,6 +17,11 @@ var deletePrevRequest = function() {
     $('.content-result').html(proposal);
 };*/
 
+var showResultDom = function(result) {
+    $('.result-search').addClass('show');
+    $('.content-result').append(result);
+};
+
 //Fonction pour afficher les mots clés des restaurants
 var showKeyWorkRestaurant = function(inputValue) {
     //je crée un tableau dans lequel je stock la valeur récupéré dans le champs du formulaire
@@ -28,22 +33,22 @@ var showKeyWorkRestaurant = function(inputValue) {
     loadResult(inputValue, function (callback) {
         //Ce que je souhaite, c'est de ne remonter que le bloc qui 
         //m'interesse vis à vis de ma recherche
-        
+        var result = '';
         for(var i = 0; i < callback.restaurants.length; i++) { 
-            if(callback.restaurants[i].name === inputValue) {
-                var result = '';
-                result += '<div class="pure-u-1 pure-u-md-1-3"><div class="pricing-table pricing-table-free"><div class="pricing-table-header"><h2>' + callback.restaurants[i].name + '</h2><div>' + callback.restaurants[i].date + '</div></div></div>';
+            debugger
+            var data = callback.restaurants[i].name.toLowerCase();
+            if( data === inputValue) {
+                result += '<div class="pure-u-1 pure-u-md-1-3"><div class="pricing-table pricing-table-free"><div class="pricing-table-header"><h2>' 
+                       + callback.restaurants[i].name 
+                       + '</h2><div>' 
+                       + callback.restaurants[i].date 
+                       + '</div></div></div>';
                 
                 //$('.result-search').html('');
                 $('.result-search').addClass('show');
                 $('.content-result').append(result);
             }
-
-        } 
-            if(callback.restaurants[i].name !== inputValue) {
-                console.log('pas de réponse');
-            }
-
+        }
     });
 };
 
@@ -52,18 +57,17 @@ var renderKeyWord = function(array) {
     var myWord = ' ';
 
     //array.forEach(function(keyWord) {
-        myWord += array;
+    myWord += array;
     //});
     $('#keyWord').html(myWord);
 };
 
-
-
 //Je soumet le formulaire et j'affiche les mots clés dans le DOM
 $('.get-restaurant').submit(function(e) {
+
     e.preventDefault();
     deletePrevRequest();
-    var inputValue = $('.field-search').val();
+    var inputValue = $('.field-search').val().toLowerCase();
     showKeyWorkRestaurant(inputValue);
 });
 
@@ -75,6 +79,7 @@ $('.btn-empty').on('click', function(e) {
 
     if($('.field-search').val !== '') {
         $('.field-search').val('');
+        deletePrevRequest();
     }
 });
 

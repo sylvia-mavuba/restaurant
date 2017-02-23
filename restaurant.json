@@ -1,5 +1,5 @@
 "restaurant" : [
-    db.restaurants.insert({
+    {
         "name": "Yaki yuity",
         "tags": "restaurant, japonais, paris",
         "pictureURL": "",
@@ -9,8 +9,8 @@
         "area": "champs elysees",
         "imgVignette": "https://pixabay.com/static/uploads/photo/2015/11/19/10/38/food-1050813_150.jpg",
         "comments": "Very Good place to eat and enjoy your time"
-    }),
-    db.restaurants.insert({
+    },
+    {
         "id": 1,
         "name": "Casa de Julia",
         "tags": "restaurant, espagnol, seville",
@@ -21,8 +21,8 @@
         "area": "santa cruz",
         "imgVignette": "https://pixabay.com/static/uploads/photo/2016/09/07/19/54/wine-1652455_150.jpg",
         "comments": "Very Good place to eat and enjoy your time"
-    }),
-    db.restaurants.insert({
+    },
+    {
         "name": "Mazouk",
         "tags": "restaurant, paris, créole",
         "pictureURL": "",
@@ -32,8 +32,8 @@
         "area": "les banquettes",
         "imgVignette": "https://pixabay.com/static/uploads/photo/2014/09/17/20/26/restaurant-449952_150.jpg",
         "comments": "Very Good place to eat and enjoy your time"
-    }),
-    db.restaurants.insert({
+    },
+    {
         "name": "Le petit Nicolas",
         "tags": "restaurant, français, bon",
         "pictureURL": "",
@@ -43,5 +43,5 @@
         "area": "pyramides",
         "imgVignette": "https://pixabay.com/static/uploads/photo/2014/09/13/21/30/dinner-table-444434_150.jpg",
         "comments": "Very Good place to eat and enjoy your time"
-    })
+    }
 ]
