@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var loadResult = function(inputValue, callback) {
+var loadResult = function(inputValue, resp) {
 
     var URL = '/api/restaurants';
 
@@ -10,7 +10,7 @@ var loadResult = function(inputValue, callback) {
         contentType: "application/json; charset=UTF-8",
         success: function(data) {
         
-            callback(data);
+            resp(data);
         }
     });
 };
@@ -49,23 +49,35 @@ var showResultDom = function(result) {
 var showKeyWorkRestaurant = function(inputValue) {
     //je crée un tableau dans lequel je stock la valeur récupéré dans le champs du formulaire
     //stockRestaurant.push(inputValue);
-    
+    var inputValue = inputValue.toLowerCase();
+
     renderKeyWord(inputValue);
     //$('#key-word-field').html(stockRestaurant);
 
-    loadResult(inputValue, function (callback) {
+    loadResult(inputValue, function (data) {
         //Ce que je souhaite, c'est de ne remonter que le bloc qui 
         //m'interesse vis à vis de ma recherche
         var result = '';
-        for(var i = 0; i < callback.restaurants.length; i++) { 
+
+        debugger
+        JSON.stringify(data);
+        
+        /*for(var i = 0; i < data.restaurants.length; i++) { 
+
+            //var tag = _.toArray(data.restaurants[i].tags);
+            var tag = data.restaurants[i].tags.slice(",");s
             debugger
-            var data = callback.restaurants[i].name.toLowerCase();
-            if( data === inputValue) {
+            
+
+        }*/
+        
+
+        for(var i = 0; i < data.restaurants.length; i++) { 
+
+            if(data.restaurants[i].name.toLowerCase() === inputValue) {
                 result += '<div class="pure-u-1 pure-u-md-1-3"><div class="pricing-table pricing-table-free"><div class="pricing-table-header"><h2>' 
-                       + callback.restaurants[i].name 
-                       + '</h2><div>' 
-                       + callback.restaurants[i].date 
-                       + '</div></div></div>';
+                       + data.restaurants[i].name 
+                       + '</h2><div>';
                 
                 //$('.result-search').html('');
                 $('.result-search').addClass('show');
@@ -87,10 +99,9 @@ var renderKeyWord = function(array) {
 
 //Je soumet le formulaire et j'affiche les mots clés dans le DOM
 $('.get-restaurant').submit(function(e) {
-
     e.preventDefault();
     deletePrevRequest();
-    var inputValue = $('.field-search').val().toLowerCase();
+    var inputValue = $('.field-search').val();
     showKeyWorkRestaurant(inputValue);
 });
 

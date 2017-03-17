@@ -71,7 +71,6 @@ p {
  * vertically center the text.
  */
 .banner {
-  background: transparent url("../img/bg-home.jpg") 0 0 no-repeat;
   text-align: center;
   background-size: cover;
   height: 200px;

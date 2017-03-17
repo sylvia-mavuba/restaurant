@@ -1,4 +1,4 @@
-var loadResult = function(inputValue, callback) {
+var loadResult = function(inputValue, resp) {
 
     var URL = '/api/restaurants';
 
@@ -9,7 +9,7 @@ var loadResult = function(inputValue, callback) {
         contentType: "application/json; charset=UTF-8",
         success: function(data) {
         
-            callback(data);
+            resp(data);
         }
     });
 };
