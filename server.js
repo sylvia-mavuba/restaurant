@@ -1,3 +1,4 @@
+//HELP : http://adrianmejia.com/blog/2014/09/28/angularjs-tutorial-for-beginners-with-nodejs-expressjs-and-mongodb/
 var path = require('path');
 var express = require('express');
 var logger = require('morgan');
@@ -52,14 +53,14 @@ app.get('/api/restaurants', function (req, res) {
 app.post('/api/restaurants/new', function (req, res) {
   console.log(req.body);
 
-  var newRestaurant = new Restaurant({ 
-    'name': req.body.name, 
-    'tags': req.body.tags, 
-    'pictureURL': req.body.pictureURL, 
-    'date': req.body.date, 
-    'address': req.body.address, 
-    'city': req.body.city, 
-    'area': req.body.area, 
+  var newRestaurant = new Restaurant({
+    'name': req.body.name,
+    'tags': req.body.tags,
+    'pictureURL': req.body.pictureURL,
+    'date': req.body.date,
+    'address': req.body.address,
+    'city': req.body.city,
+    'area': req.body.area,
     'imgVignette': req.body.imgVignette
   });
 

@@ -30,7 +30,7 @@
     "watchify": "^3.7.0"
   },
   "devDependencies": {
-    "angular": "^1.6.0",
+    "angular": "^1.6.3",
     "nodemon": "^1.11.0"
   }
 }
