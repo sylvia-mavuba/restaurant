@@ -1,14 +1,17 @@
 //HELP : http://adrianmejia.com/blog/2014/09/28/angularjs-tutorial-for-beginners-with-nodejs-expressjs-and-mongodb/
+
+// set up ========================
 var path = require('path');
 var express = require('express');
 var logger = require('morgan');
 var app = express();
-var port = process.env.PORT || 3000;
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
 var cors = require('cors');
-
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
+
+// configuration =================
+var port = process.env.PORT || 3000;
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/restaurants';
 var Restaurant = require('./restaurant.js').Restaurant;
 
@@ -25,7 +28,8 @@ app.set('views', path.join(__dirname, '/views')); //dossier pages
 app.use(logger('dev'));
 app.use(cors());
 app.use(methodOverride());
-app.use(express.static('dist/'));
+//app.use(express.static('dist/'));
+app.use(express.static('public/src/app/views'));
 
 app.get('/', function (req, res) {
   res.render('home');
